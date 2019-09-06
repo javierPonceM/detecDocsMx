@@ -1,0 +1,70 @@
+App running on port: 
+server listening in port: 5013
+========fileObj=========
+{ domicilio: 
+   { name: 'cfeJavier.jpg',
+     data: <Buffer ff d8 ff e1 3b 3f 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 3849614,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '624276bc551e7e8e48c397dd55e15dee',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+========datos rep==============
+RFC: CSS160330CP7
+MARTINEZ RAMIREZ OBDULIA
+CEREZOS SN CP.62820
+TOTAL A PAGAR:
+$131.00
+(CIENTO TREINTA Y UN PESOS 00/100 M.N)
+XALPA YECAPIXTLA. C.P. 62820
+PAZULCO, MOR.
+NO. DE SERVICIO 297180904827
+RMU: 62820 18-09-18 DEDE-101010 040 CFE
+
+======================
+========datos rep==============
+[ 'MARTINEZ RAMIREZ OBDULIA',
+  'CEREZOS SN CP.62820',
+  'XALPA YECAPIXTLA. C.P. 62820',
+  'PAZULCO, MOR.',
+  'NO. DE SERVICIO 297180904827',
+  'RMU: 62820 18-09-18 DEDE-101010 040 CFE',
+  '' ]
+======================
+Archivo cfeJavier.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'AvisoReciboCfe.jpg',
+     data: <Buffer ff d8 ff db 00 43 00 10 0b 0b 11 0c 11 1b 10 10 1b 22 1a 15 1a 22 27 1c 1c 1c 1c 27 22 17 17 17 17 17 22 11 0c 0c 0c 0c 0c 0c 11 0c 0c 0c 0c 0c 0c 0c ... >,
+     size: 199062,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '8195ddd31b56b11a3117aea50f803b7f',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+========datos rep==============
+RFC: CSS160330CP7
+CLIENTE 01 DIVISION VMIN
+Av.Paseo de la Reforma 164 Int 4
+Vicente Guerrero y Morelos, San Juan Ixtacala amp Norte, C.P. 54168
+Tlalnepantla de Baz, Estado de México.
+TOTAL A PAGAR:
+(TRECIENTOS CINCUENTA Y TRES PESOS 00/100 M.N.)
+NO. DE SERVICIO (RMU): 00000 AA-MM-DD XXXX-AAMMDD 000 XXX
+
+======================
+========datos rep==============
+[ 'CLIENTE 01 DIVISION VMIN',
+  'Av.Paseo de la Reforma 164 Int 4',
+  'Vicente Guerrero y Morelos, San Juan Ixtacala amp Norte, C.P. 54168',
+  'Tlalnepantla de Baz, Estado de México.',
+  '' ]
+======================
+Archivo AvisoReciboCfe.jpg borrado localmente!

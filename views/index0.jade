@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Resultados
+  ul
+   li tipo de documento: #{tipoDoc}
+   li Se presentó #{whichOne}
+   li Nombre: #{nombre}
+   li Domicilio: #{domicilio}
+   li CP: #{cp}
+   li Se detectó un rostro...pruebas..: #{rostro}
+  a(href='/' class="btn btn-primary") Volver

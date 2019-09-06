@@ -1,0 +1,107 @@
+App running on port: 
+server listening in port: 5013
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'dniJJ.jpg',
+     data: <Buffer ff d8 ff e1 35 2b 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 4028282,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'a045d66419c6a46508bccce1a6823676',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dniJJ.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'ineJavier.jpg',
+     data: <Buffer ff d8 ff e1 3a 2c 45 78 69 66 00 00 4d 4d 00 2a 00 00 00 08 00 0b 01 10 00 02 00 00 00 11 00 00 00 92 01 31 00 02 00 00 00 40 00 00 00 a3 01 12 00 03 ... >,
+     size: 3832955,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '241dc2a0b3671e8492f1dd0a61adeb8f',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+[ 'PONCE',
+  'MARTINEZ',
+  'FRANCISCO JAVIER',
+  '707',
+  'COL XALPA 09640',
+  'IZTAPALAPA, CDMX',
+  '' ]
+Archivo ineJavier.jpg borrado localmente!

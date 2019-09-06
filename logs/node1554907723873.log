@@ -1,0 +1,16 @@
+App running on port: 
+server listening in port: 5013
+========fileObj=========
+{ 'reciboAxtel.jpg': 
+   { name: 'reciboAxtel.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 43 00 03 02 02 02 02 02 03 02 02 02 03 03 03 03 04 06 04 04 04 04 04 08 06 06 05 ... >,
+     size: 166982,
+     encoding: 'binary',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '7d21a11e71c613d2dad7fd58f8c3d191',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo reciboAxtel.jpg borrado localmente!

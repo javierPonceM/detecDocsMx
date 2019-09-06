@@ -1,0 +1,15 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.imgAnalisis {
+  width: 200px;
+  height: 200px;
+  border-radius: 50px 50px 50px 50px;
+  display: block;
+  margin: 10px;
+}

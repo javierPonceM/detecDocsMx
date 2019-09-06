@@ -1,0 +1,106 @@
+App running on port: 
+server listening in port: 5013
+========fileObj=========
+{ domicilio: 
+   { name: 'dni-ejemplo.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 01 00 48 00 48 00 00 ff db 00 43 00 06 04 04 04 05 04 06 05 05 06 09 06 05 06 09 0b 08 06 06 08 0b 0c 0a 0a 0b ... >,
+     size: 64394,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '6a39c331994f6a83f19dcdc3cc947226',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo dni-ejemplo.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'recibo-agua1.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 84 00 09 06 07 13 13 12 15 13 13 13 16 16 15 17 17 18 18 19 18 17 18 17 1a 19 1a ... >,
+     size: 10717,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '4a67b738d89449edf8722842ce275a4c',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo recibo-agua1.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'recibo-agua1.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 84 00 09 06 07 13 13 12 15 13 13 13 16 16 15 17 17 18 18 19 18 17 18 17 1a 19 1a ... >,
+     size: 10717,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '4a67b738d89449edf8722842ce275a4c',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo recibo-agua1.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'recibo-agua2.png',
+     data: <Buffer 89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 01 8f 00 00 02 22 08 02 00 00 00 bf 92 d3 1d 00 00 00 03 73 42 49 54 08 08 08 db e1 4f e0 00 00 ... >,
+     size: 162673,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/png',
+     md5: 'f53667e2a94ddbe47c6bbfa79b78d54a',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'reciboAguaProp.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 43 00 08 06 06 07 06 05 08 07 07 07 09 09 08 0a 0c 14 0d 0c 0b 0b 0c 19 12 13 0f ... >,
+     size: 126306,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: '10ec452753e155ff6653e53390e6ebe9',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+===========
+[ 'ACEVEDO BARRERA MARIA GUADALUPE',
+  'PORTO ALEGRE 305 EDIF A406',
+  'C.P. 09440, IZTAPALAPA',
+  'YCALLE: ALSACIA',
+  'AV AMACUZAC' ]
+==============
+Archivo reciboAguaProp.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'predial.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 84 00 09 06 07 13 13 12 15 13 12 13 16 16 15 17 18 1f 18 18 18 18 19 1e 18 1a 1b ... >,
+     size: 11786,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'c13552f870109025bd3ba2ee4721db89',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo predial.jpg borrado localmente!
+========fileObj=========
+{ domicilio: 
+   { name: 'telmexProp.jpg',
+     data: <Buffer ff d8 ff e0 00 10 4a 46 49 46 00 01 01 00 00 01 00 01 00 00 ff db 00 84 00 06 06 06 06 07 06 07 08 08 07 0a 0b 0a 0b 0a 0f 0e 0c 0c 0e 0f 16 10 11 10 ... >,
+     size: 107373,
+     encoding: '7bit',
+     tempFilePath: '',
+     truncated: false,
+     mimetype: 'image/jpeg',
+     md5: 'b73e2cdf4401bf0e07f8a2ad0ee486b0',
+     mv: [Function: mv] } }
+=================
+Archivo guardado localmente!
+Archivo telmexProp.jpg borrado localmente!
