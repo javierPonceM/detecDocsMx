@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "detecccion-mismos-rostros",
+  "private_key_id": "4ce51d79c5f3db5d4dd60d5192416e6548e8b791",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCrQVnd9Y0FsHXM\nzh8E8edFS8o3kElj5e9DFPBhq4UM/BBBegfNjh4SH0cRMfHxlxriSLWWTkd6YWQB\nrqRvgBqTfCXwkrbT1vpTauVsal7ZBxOtdxfaaAG3/3Ev5+qi5RKgRSRaIwb0njek\nVo45OFX1kKs6p0mkvE8Yqjq0BNdW/HNK8lgMNrFjSwHaPcaoIqixCq+SixR+8T0H\nzQlJbapyLoLFEQs4fL2osmt4e4N4aP405jrJ2r905sglgW4sVhReXe8oG2WIM71D\nYiuwUcOmTY4mz3PaebBg3gWC2cErL3FYeW4CLoeYrU6KNBwa/E3j0eaj8F8tShEj\nnrDmzQwRAgMBAAECggEAIVGFGPRxm+ZBfPerPEyOGMLOlHHbfXaaTrxPqkjzCVwv\nE3YY94qLWi5Apt1HO6AQ6G6J+bTAHlS9XsBqGJFdWk1gmkYJEPz11e3pteaaDnJc\nhzaw6tqqXvBxRodB9LBJp+nb0TeYXlY78Bqw7/wAaVbcoXwzjTvfzaYs5qI8fR0t\nRqp+1tjkofA08B7LTcGs2FRw9M+qY275SxWk6aHMLo4hrc8xYyHyujeQPzkaNxt7\nFq1ax5aXBQAEi6T+gXarnORvGm30lBVEvbMZaDswu+RmpVTExxeZG+k3m+56JKaI\naB8nuIdCslOciuHaL/CLzbgXFyk6BIMPzCdXzBKsmQKBgQDxseWlz7uZxq47AdXB\nYy1w6tZr34JgRhj2RiqgCIeTTE3DpYwJtEjCg7gaF3n3ywKLq10gFTFcPd8DcwYB\nuC1VdzB7Y/Iyx+9E2I8qHIwLTk1N9PdfiFzxHna4kU5MPRM71pSRuO9ajabUfz/v\nvUEHgXR5H45uK+5bWrsj1cQMTQKBgQC1ZCtvXFwFwY750N9fqGxGuNEQqr1O9V3b\nwu5BJyUeLZdrFt5gqvnt6PMpMqPGMxArerMG/ZipJMJJ600SRp6ZlmTqsuxQCJSG\nAq9JMAO9mjlw8EWuWWSXRkrCgVQ94ntQz1UMKFcDfZorplY4mPxsCNdDRMpSTouP\nFz0y3pIQ1QKBgQDOaLAH8CV1yXCIYiPL+UgYc+XU0FfGona08+15KG+oQvTyjhHP\nQ9ETlWwHlF8MWKp+30UzngW+kfRAPN43X7QPli+oYQ25gnf7orp5K1IKYb+xQPB1\n/L3rCao4K5fjkhE3/CR7YqW+/tQoC9hthIHhyBPRUTrRKeFw0Uaa7vdzzQKBgCaO\nFhVjgkPO8n7zAKeqeulFW1q5j+d6i+qsMkwy79bMRgUDJV1SujDxdM3q75ivPd6g\nA/GWcZ5yK8Hee9FIpWlr6CNiyIvyZu9dHrjltcXVRCRXTdhTM+hbjoRtTOSigSea\nCi+9W1Fonx5sCqOZEP49mtO3iXGZNFzDycRIPq/JAoGASPzaM+w0Z5HEXE/zp7MF\nmraYyUHYhPWl122HNc8Tw4pqfA4X54XGhItaC6nal87fnhCjZvwIsDLf8WtUA+g2\nxn0GEaDX0jLGl9YJlUud/HQtgGRPX9AQyASBDbvVS2YZA2Gkq5VPqnuMlrM3gKVc\ntoGlcmDz+hri/wpYT/eBK2M=\n-----END PRIVATE KEY-----\n",
+  "client_email": "detect-same-faces-api-key@detecccion-mismos-rostros.iam.gserviceaccount.com",
+  "client_id": "116270614626195331090",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/detect-same-faces-api-key%40detecccion-mismos-rostros.iam.gserviceaccount.com"
+}

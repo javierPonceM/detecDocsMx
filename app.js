@@ -26,7 +26,7 @@ console.log = function(d) { //
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -77,3 +77,4 @@ correr la aplicacion
 liga de interes::
 https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually
 */
+// sudo export GOOGLE_APPLICATION_CREDENTIALS="/home/javier/Documentos/GitHub/googleVision-IdentificacionDeDocs/detect-same-face-api/detect-same-faces-key.json"
