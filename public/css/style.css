@@ -3,13 +3,90 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 a {
   color: #00B7FF;
 }
+
 .imgAnalisis {
   width: 200px;
   height: 200px;
   border-radius: 50px 50px 50px 50px;
   display: block;
   margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.imageUploated {
+
+}
+
+input#inputFile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  display: none;
+  z-index: -1;
+}
+
+label#inputLabel{
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #106BA0;
+  display: inline-block;
+  transition: all .5s;
+  cursor: pointer;
+  padding: 15px 40px !important;
+  text-transform: uppercase;
+  width: fit-content;
+  text-align: center;
+  }
+
+  .submitButton{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .archivo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50px 50px 50px 50px;
+    display: block;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .preloader {
+    width: 70px;
+    height: 70px;
+    border: 10px solid #eee;
+    border-top: 10px solid rgb(21, 97, 184);
+    border-radius: 50%;
+    animation-name: girar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    display: none;
+  }
+  @keyframes girar {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
