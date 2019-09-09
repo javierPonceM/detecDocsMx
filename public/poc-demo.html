@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html:5>
 <html lang="es">
 
 <head>
@@ -9,29 +9,64 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/actions.js"></script>
 </head>
 
 <body>
   <div class="row">
-    <div class="col-sm-md-lg-xl-1 text-center">
+    <div class="col-sm-12 col-md-12 col-lg-12">
       <h1>Identificación de DOCS</h1>
     </div>
   </div>
 
-  <center>
-    <div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-4">
+      <h4>Formatos admitidos</h4>
+      <ul>
+        <li>jpg</li>
+        <li>jpeg</li>
+        <li>pdf</li>
+        <li>png</li>
+        <li>tif</li>
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-4">
       <img class="imgAnalisis"
         src="https://previews.123rf.com/images/makc76/makc761602/makc76160200002/52590756-el-hombre-de-negocios-est%C3%A1-analizando-el-documento-usando-la-lupa-para-ver-el-texto-peque%C3%B1o.jpg"
         alt="">
     </div>
-  </center>
-  <form enctype="multipart/form-data" action="analisis" method="post">
-    <div class="form-group">
-      <label for="domicilio">Identificación Oficial:</label>
-      <input type="file" name="domicilio" class="form-control" id="domicilio" placeholder="Documento">
+
+    <div class="col-sm-12 col-md-12 col-lg-4 preview">
+
     </div>
-    <button type="submit" class="btn btn-primary">Analizar</button>
-  </form>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-4">
+
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-4">
+      <form enctype="multipart/form-data" action="analisis" method="post" id="form1">
+
+        <label for="inputFile" id="inputLabel"><span>Seleccionar archivo</span></label>
+        <input type="file" name="inputFile"  class="inputFile" id="inputFile" placeholder="Documento">
+
+        <button type="submit" class="btn btn-primary submitButton">Analizar</button>
+      </form>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-4">
+      <div id="resultados">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="preloader"></div>
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

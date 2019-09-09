@@ -1,6 +1,6 @@
 window.onload = function(e) {
-
-  var input = document.getElementById('documento0');
+  
+  var input = document.getElementById('inputFile');
   var preview = document.getElementsByClassName('preview')[0];
 
   input.addEventListener('change', updateImageDisplay);
@@ -42,7 +42,7 @@ window.onload = function(e) {
             listItem.appendChild(para);
           }
         } else {
-          para.textContent = 'Archivo: ' + curFiles[i].name + ': Not a valid file type. Update your selection.';
+          para.textContent = 'Archivo: ' + curFiles[i].name + ': No tiene un formato valido. Escoja un archivo de formato aceptado.';
           listItem.appendChild(para);
         }
 
@@ -82,7 +82,7 @@ window.onload = function(e) {
   document.getElementById('form1').addEventListener('submit', function(e) {
     event.preventDefault();
     var preloader = document.getElementsByClassName('preloader')[0];
-    preloader.style.display = "inline";
+    preloader.style.display = "block";
 
     var form = document.getElementById('form1');
     var data = new FormData(form);
@@ -100,6 +100,7 @@ window.onload = function(e) {
 }
 
 function renderResults(response) {
+  actualizarDatos();
   var jsonResults = JSON.parse(response);
   var divResults = document.getElementById('resultados');
   var list1 = document.createElement('ul');
