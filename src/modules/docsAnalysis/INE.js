@@ -1,25 +1,29 @@
-const exprFechNaci = /FECHA\sDE\sNAC[I1l]M[I1l]ENT[O0]/i,
-  exprNomb = /N[O0]MBRE/i,
-  paramIne = /INSTITUT[O0]\sNAC[I1l]ONAL\sELECT[O0]RAL/i,
-  paramIne1 = /CREDENC[I1l]AL\sPARA\sV[O0]TAR/i,
+const exprFechNaci = /FECHA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
+  exprNomb = /N[ÓO0]MBRE/ig,
+  paramIne = /INSTITUT[ÓO0]\sNAC[I1lL]ONAL\sELECT[ÓO0]RAL/ig,
+  paramIne1 = /CREDENC[I1lL]AL\sPARA\sV[ÓO0]TAR/ig,
   exprCp = /\d{5}/,
-  expFecha = /(\d{2}[/|-]\d{2}[/|-]\d{4})/i,
-  expClaEle = /CLAVE\sDE\sELECT[O0]R/i,
-  expDomi = /D[O0]M[I1l]C[I1l]L[I1l][O0]/i,
+  expFecha = /(\d{2}[/|-]\d{2}[/|-]\d{4})/ig,
+  expClaEle = /CLAVE\sDE\sELECT[ÓO0]R/ig,
+  expDomi = /D[ÓO0]M[I1lL]C[I1lL]L[I1lL][ÓO0]/ig,
   sL = /\n/g,
-  expSex = /SEXO\s[H|M]/g,
-  expDom = /D[O0]M[I1l]C[I1l]L[I1l][O0]/g,
+  expSex = /SEX[ÓO0]\s[H|M]/g,
+  expDom = /D[ÓO0]M[I1lL]C[I1lL]L[I1lL][ÓO0]/g,
   expMinus = /[a-z]{1,25}/g;
 
+  // el ocr de las nuevas ine trae consigo mucha basura, por lo que habra que recortar la imagen y hacer el ocr de nuevo
+
 let getInfoFromIne = async function(datos, rostro) {
-  var ine, ine1, arrNomb, posNombre, arrClav, posClave, datosRep,
+  let ine, ine1, arrNomb, posNombre, arrClav, posClave, datosRep,
     datosRep1, datosRep2, nombre, domicilio, nombreArr, secondname,
     codPost, datosDoc;
   ine = paramIne.test(datos);
   ine1 = paramIne1.test(datos);
 
-  if ((ine == true && rostro == true) || (ine1 == true && rostro == true)) {
+  console.log(datos);
+  if (ine == true && rostro == true && ine1 == true ) {
 
+    
     //extraccion de datos de una ine nacional (no extranjera)
     arrNomb = datos.match(exprNomb);
     posNombre = datos.indexOf(arrNomb[0]);
@@ -39,6 +43,7 @@ let getInfoFromIne = async function(datos, rostro) {
       else return '';
     });
     codPost = domicilio.match(exprCp);
+    domicilio = domicilio.replace(codPost,'');
     console.log(datosRep2);
 
     datosDoc = {
