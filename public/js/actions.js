@@ -11,6 +11,7 @@ window.onload = function(e) {
     }
 
     var curFiles = input.files;
+    console.log(curFiles);
     if (curFiles.length === 0) {
       var para = document.createElement('p');
       para.textContent = 'no se seleccionó un archivo';
@@ -18,36 +19,35 @@ window.onload = function(e) {
     } else {
       var list = document.createElement('ol');
       preview.appendChild(list);
-      for (var i = 0; i < curFiles.length; i++) {
         var listItem = document.createElement('li');
         var para = document.createElement('p');
 
-        if (validFileType(curFiles[i])) {
-          if (curFiles[i].type == 'application/pdf' || curFiles[i].type == 'image/tiff') {
-            para.textContent = curFiles[i].name + ', Tamaño: ' + returnFileSize(curFiles[i].size);
+        if (validFileType(curFiles[0])) {
+          if (curFiles[0].type == 'application/pdf' || curFiles[0].type == 'image/tiff') {
+            para.textContent = curFiles[0].name + ', Tamaño: ' + returnFileSize(curFiles[0].size);
             var pdfEmbebido = document.createElement('iframe');
-            pdfEmbebido.src = window.URL.createObjectURL(curFiles[i]);
+            pdfEmbebido.src = (window.webkitURL || window.URL).createObjectURL(curFiles[0]);
             pdfEmbebido.type = "application/pdf";
-            pdfEmbebido.width = "50%%";
+            pdfEmbebido.width = "50%";
             pdfEmbebido.height = "50%";
             listItem.appendChild(pdfEmbebido);
             listItem.appendChild(para);
 
           } else {
-            para.textContent = curFiles[i].name + ', Tamaño: ' + returnFileSize(curFiles[i].size);
+            para.textContent = curFiles[0].name + ', Tamaño: ' + returnFileSize(curFiles[0].size);
             var image = document.createElement('img');
             image.className += "archivo";
-            image.src = window.URL.createObjectURL(curFiles[i]);
+            image.src = window.URL.createObjectURL(curFiles[0]);
             listItem.appendChild(image);
             listItem.appendChild(para);
           }
         } else {
-          para.textContent = 'Archivo: ' + curFiles[i].name + ': No tiene un formato valido. Escoja un archivo de formato aceptado.';
+          para.textContent = 'El archivo no tiene un formato valido. Seleccione otro con formato aceptado, vea la lista.';
           listItem.appendChild(para);
         }
 
         list.appendChild(listItem);
-      }
+      
     }
   }
 
@@ -86,7 +86,7 @@ window.onload = function(e) {
 
     var form = document.getElementById('form1');
     var data = new FormData(form);
-
+    var urlPage = window.location.href;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -94,19 +94,19 @@ window.onload = function(e) {
         preloader.style.display = "none";
       }
     };
-    xmlhttp.open("POST", "/docsAnalyze", true);
+    xmlhttp.open("POST", urlPage + "docsAnalyze", true);
     xmlhttp.send(data);
   });
 }
 
 function renderResults(response) {
+  console.log(response);
   actualizarDatos();
   var jsonResults = JSON.parse(response);
   var divResults = document.getElementById('resultados');
   var list1 = document.createElement('ul');
   var li1 = document.createElement('li');
   li1.innerHTML = 'Documento: ' + jsonResults.data[0].dataAnalized.typeDoc;
-  console.log(li1);
   var li2 = document.createElement('li');
   li2.innerHTML = 'Se Presentó: ' + jsonResults.data[0].typeDoc;
   var li3 = document.createElement('li');

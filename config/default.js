@@ -5,7 +5,7 @@ export_config.google = {};
 
 export_config.app["timezone"] = "America/mexico_city";
 export_config.app["port"] = 5013;
-export_config.google['bucketName'] = 'deteccion-de-docs-soacmc'; //nombre del contenedor google donde se cargaran archivos
+export_config.google['bucketName'] = 'deteccion-de-docs'; //nombre del contenedor google donde se cargaran archivos
 
 
 module.exports = export_config;

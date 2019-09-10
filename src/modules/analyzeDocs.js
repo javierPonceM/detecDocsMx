@@ -36,7 +36,7 @@ let analyze = (req, res) => { //se pasa el archivo a la peticion post
       fs.writeFile('./docs/docsReceived/' + nombreDoc, datos, (err) => { //se guarda el archivo en el server
         if (err) throw err;
         console.log('Archivo guardado localmente!');
-        if (typeMime == 'image/jpeg' || typeMime == 'image/x-png') {
+        if (typeMime == 'image/jpeg' || typeMime == 'image/x-png' || typeMime == 'image/png') {
           visionIMG.analisisVisionDoc(nombreDoc, typeMime, nombreBucket, arrayDocType, function (respuesta) {
             arrayDocType = respuesta;
             if (flag == numKeys - 1) res.send(respuesta);
