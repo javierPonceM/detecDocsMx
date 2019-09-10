@@ -8,6 +8,8 @@ const visionIMG = require('./google-vision-img.js');
 const visionPDF = require('./google-vision-pdf.js');
 const nombreBucket = config.get('google.bucketName');//nombre del bucket en google
 
+const receivedDir = process.cwd() + '/docs/docsReceived/';
+
 let numKeys;
 let analyze = (req, res) => { //se pasa el archivo a la peticion post
   var flag = 0;
@@ -33,11 +35,11 @@ let analyze = (req, res) => { //se pasa el archivo a la peticion post
       let datos = fileObj[item].data;
       // arrNames.push(nombreDoc);
 
-      fs.writeFile('./docs/docsReceived/' + nombreDoc, datos, (err) => { //se guarda el archivo en el server
+      fs.writeFile(receivedDir + nombreDoc, datos, (err) => { //se guarda el archivo en el server
         if (err) throw err;
         console.log('Archivo guardado localmente!');
         if (typeMime == 'image/jpeg' || typeMime == 'image/x-png' || typeMime == 'image/png') {
-          visionIMG.analisisVisionDoc(nombreDoc, typeMime, nombreBucket, arrayDocType, function (respuesta) {
+          visionIMG.analisisVisionDoc(nombreDoc, arrayDocType, function (respuesta) {
             arrayDocType = respuesta;
             if (flag == numKeys - 1) res.send(respuesta);
             flag++;

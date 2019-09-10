@@ -3,10 +3,11 @@ const client = new vision.ImageAnnotatorClient();
 const fs = require('fs');
 let gm = require('gm');
 
-const dir = process.cwd() + '/docs/cropImgs';
+const cropDir = process.cwd() + '/docs/cropImgs/';
+const receivedDir = process.cwd() + '/docs/docsReceived/';
 
 async function detectFaces(inputFile) {
-    const request = { image: { source: { filename: inputFile } } };
+    const request = { image: { source: { filename: receivedDir +inputFile } } };
     const results = await client.faceDetection(request);
     const faces = results[0].faceAnnotations;
     const numFaces = faces.length;
@@ -20,7 +21,7 @@ async function detectFaces(inputFile) {
         
         await gm(inputFile)
           .crop(width, higth, xinit, yinit)
-          .write(dir + "/crop.jpg", function(err){
+          .write(cropDir + 'CROP' + inputFile, function(err){
             if (err) return console.dir(arguments)
             console.log(this.outname + " created...");
             //TODO: guardar la imagen con los datos detectados en una base de datos

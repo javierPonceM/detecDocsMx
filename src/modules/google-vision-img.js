@@ -1,31 +1,17 @@
-const fs = require('fs');
-const vision = require('@google-cloud/vision');
-const client = new vision.ImageAnnotatorClient();
 var getInfoDeDocumento = require('./analisis-info.js');
 var deleteFile = require('../services/deleteFiles.js');
-let faceService = require('./faceDetection/faceDetection');
-let flagItem = 0;
+var ocr = require('../services/ocrFromGoogle');
+// var faceService = require('../services/faceDetection');
 
-module.exports.analisisVisionDoc = async function (archivo, mime, nombreBucket, arrayDocType, callback) {
-  let bucketName = nombreBucket;
-  let rostro, facedetection, rostroDetectado, resultado;
+module.exports.analisisVisionDoc = async function(archivo, arrayDocType, callback){
+  var rostro, facedetection;
 
-  let filePath = process.cwd() +'/docs/docsReceived/' + archivo;
+  let detections = await ocr.doOCR(archivo);
 
+  // let faces = await faceService.detectFaces(archivo);
+  // rostro = faces ? true : false;
 
-  const [resultados] = await client.textDetection(filePath);
-  const detections = resultados.textAnnotations;
-
-  const respVision = detections[0].description;
-
-  
-  let faces = await faceService.detectFaces(filePath);
-  rostro = faces ? true : false;
-  // rostro = true; //prueba
-  // resultado.pages.blocks[i].paragraphs[k].words[j].symbols[h].confidence >0.75;
-  // resultado.pages.blocks[i].paragraphs[k].words[j].symbols[h].text
-  let infoDeDocumento = await getInfoDeDocumento.getInfoDeDocumento(respVision, rostro); //identificar el tipo de doc
-  
+  let infoDeDocumento = await getInfoDeDocumento.getInfoDeDocumento(archivo, detections); //identificar el tipo de doc
 
   let idDoc = infoDeDocumento.idTypeDoc;
   let tipoDeDocumento = infoDeDocumento.wichOne;
@@ -33,15 +19,12 @@ module.exports.analisisVisionDoc = async function (archivo, mime, nombreBucket, 
   let docOjb = {
     idTypeDoc: idDoc,
     typeDoc: tipoDeDocumento,
-    dataDoc: respVision,
+    dataDoc: detections[0].description,
     dataAnalized: infoDeDocumento
   };
 
   docOjb.numDoc = 1;
   arrayDocType.data.push(docOjb);
-
-  
-
 
 //************************************** */
   //comete la siguiente linea si no quiere tener problemas con el modulo de face detection
