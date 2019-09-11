@@ -1,3 +1,5 @@
+var cropFaceService = require(process.cwd() +'/src/services/cropFaceInImg');
+
 const exprFechNaci = /FECHA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
   exprNomb = /N[ÓO0]MBRE/ig,
   paramIne = /INSTITUT[ÓO0]\sNAC[I1lL]ONAL\sELECT[ÓO0]RAL/ig,
@@ -12,21 +14,21 @@ const exprFechNaci = /FECHA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
 
 // el ocr de las nuevas ine trae consigo mucha basura, por lo que habra que recortar la imagen y hacer el ocr de nuevo
 
-let getInfoFromIne = async function (nameFile, datos, rostro) {
+let getInfoFromIne = async function (nameFile, datos) {
   let ine, ine1, arrNomb, posNombre, arrClav, posClave, datosRep,
     datosRep1, datosRep2, nombre, domicilio, nombreArr, secondname,
     codPost, datosDoc, datos1;
-    
-  // if (rostro) {
-  //   detecFace
-  // }
 
   ine = paramIne.test(datos[0].description);
   ine1 = paramIne1.test(datos[0].description);
   // console.log(datos);
-  if (ine == true && rostro == true && ine1 == true) {
+  if (ine == true && ine1 == true) {
     datos1 = await cropAndAnalizeIne(datos)
     
+    let faceImg = await cropFaceService.cropFace(nameFile);
+    console.log("resultado de faceimgService");
+    console.log(typeof faceImg == "string" ? faceImg + " contiene la cara!!" : faceImg);
+
     //extraccion de datos de una ine (no extranjera)
     arrNomb = datos1.match(exprNomb);
     posNombre = datos1.indexOf(arrNomb[0]);
@@ -63,7 +65,7 @@ let getInfoFromIne = async function (nameFile, datos, rostro) {
       cp: codPost[0],
       wichOne: 'INE',
       typeDoc: 'identificación personal',
-      faceDetected: rostro
+      faceDetected: true
     };
     return datosDoc;
   } else {
@@ -74,15 +76,16 @@ let getInfoFromIne = async function (nameFile, datos, rostro) {
 // solo traemos las palabras encontradas en el area de la ine anterior a la leyenda "fecha"
 // si queremos los datos de fecha de nacimiento y sexo, pues los obtenemos de la misma manera
 async function cropAndAnalizeIne(infoFromPastOcr) {
-  let width, higth, xinit, yinit, info = '';
+  let info = '', xlimit;
+
   await infoFromPastOcr.forEach(elm => {
     if (elm.description === 'FECHA') {
-      xinit = elm.boundingPoly.vertices[0].x;
+      xlimit = elm.boundingPoly.vertices[0].x;
     }
   });
   
   await infoFromPastOcr.forEach(elm => {
-    if (elm.boundingPoly.vertices[0].x < xinit && elm.boundingPoly.vertices[1].x < xinit) {
+    if (elm.boundingPoly.vertices[0].x < xlimit && elm.boundingPoly.vertices[1].x < xlimit) {
       info = info.concat(' ' + elm.description);
     }
   });
@@ -90,3 +93,5 @@ async function cropAndAnalizeIne(infoFromPastOcr) {
 }
 
 module.exports.getInfoFromIne = getInfoFromIne;
+
+// cropImage = cropService.cropImage(inputFile, width, higth, xinit, yinit);

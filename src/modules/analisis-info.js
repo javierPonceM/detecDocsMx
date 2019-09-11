@@ -14,7 +14,7 @@ async function getInfoDeDocumento(archivo, respVision) {
   let rostro = true; //provisional
   //regresa false si no es el documento, regresa la info analizada si es el documento en cuestion
   const datos = respVision[0].description;
-  let stsIne = await ine.getInfoFromIne(archivo, respVision, rostro); //necesita un tratamiento diferente
+  let stsIne = await ine.getInfoFromIne(archivo, respVision); //necesita un tratamiento diferente
   let stsCfe = await cfe.getInfoFromCfe(datos, rostro);//funcion asincona, esperar hasta que termine
   let stsTelmex = await telmex.getInfoFromTelmx(datos, rostro);
   let stsAxtel = await axtel.getInfoFromAxt(datos, rostro);
