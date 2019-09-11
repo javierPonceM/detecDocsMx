@@ -8,7 +8,7 @@ const visionIMG = require('./google-vision-img.js');
 const visionPDF = require('./google-vision-pdf.js');
 const nombreBucket = config.get('google.bucketName');//nombre del bucket en google
 
-const receivedDir = process.cwd() + '/docs/docsReceived/';
+const receivedDir = config.get("dirs.receivedDir");
 
 let numKeys;
 let analyze = (req, res) => { //se pasa el archivo a la peticion post

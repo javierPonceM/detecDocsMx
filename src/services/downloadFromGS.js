@@ -1,11 +1,13 @@
+const config = require("config");
 const { Storage } = require('@google-cloud/storage');
+const fs = require('fs');
 const storage = new Storage();
 
-const fs = require('fs');
+const jsonResultsDir = config.get("dirs.jsonResultsDir");
 
 module.exports.fileDownload = async function (archivo, bucket, callback) {
   const myBucket = storage.bucket(bucket);
-  let destArchivo = './docs/jsonResults/' + archivo;
+  let destArchivo = jsonResultsDir + archivo;
   const file = myBucket.file(archivo);
 
   file.download().then(function (data) {

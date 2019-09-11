@@ -1,10 +1,12 @@
+const config = require("config");
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 const fs = require('fs');
 let gm = require('gm');
 const cropService = require('./cropImages');
-const cropDir = process.cwd() + '/docs/cropImgs/';
-const receivedDir = process.cwd() + '/docs/docsReceived/';
+
+const receivedDir = config.get("dirs.receivedDir");
+const jsonResultsDir = config.get("dirs.jsonResultsDir");
 
 async function detectFaces(inputFile) {
   let faceCoordenates = {};
@@ -34,7 +36,7 @@ async function detectFaces(inputFile) {
 
 //solo para sacar los datos de las posiciones de los json
 let writeFileJson = async (nameFile, datos) => {//este debe ser un modulo aparte
-  await fs.writeFile(nameFile + '.json', JSON.stringify(datos), (err) => { //se guarda el archivo en el server
+  await fs.writeFile(jsonResultsDir + nameFile + '.json', JSON.stringify(datos), (err) => { //se guarda el archivo en el server
     if (err) throw err;
     console.log('json guardado!');
   });

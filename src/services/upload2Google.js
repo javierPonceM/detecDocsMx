@@ -1,3 +1,4 @@
+const config = require("config");
 const fs = require('fs');
 const {
   Storage
@@ -5,11 +6,12 @@ const {
 const toDoPublic = require('./makeDocPublic.js');
 const storage = new Storage();
 
+const receivedDir = config.get("dirs.receivedDir");
 
 module.exports.upload2Google = async function(archivo, mime, bucket, callbackUpload) {
   let myBucket = storage.bucket(bucket);
   let file = myBucket.file(archivo);
-  fs.createReadStream('./docs/docsReceived/' + archivo)
+  fs.createReadStream(receivedDir + archivo)
     .pipe(file.createWriteStream({
       metadata: {
         contentType: mime,

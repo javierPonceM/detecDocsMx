@@ -1,6 +1,10 @@
+const config = require("config");
 const fs = require('fs');
 const { Storage } = require('@google-cloud/storage');
 const storage = new Storage();
+
+const receivedDir = config.get("dirs.receivedDir");
+const jsonResultsDir = config.get("dirs.jsonResultsDir");
 
 //borrar un archivo en google store
 module.exports.deleteObject = function (fileName, bucketName) {
@@ -12,7 +16,7 @@ module.exports.deleteObject = function (fileName, bucketName) {
 module.exports.deleteAllObjInServ = async function (serverFiles) {
   console.log(serverFiles);
   serverFiles.forEach(function (fileName) {
-    fs.unlink('./docs/docsReceived/' + fileName, function (err) {
+    fs.unlink(receivedDir + fileName, function (err) {
       if (err) throw err;
 
       console.log('Archivo ' + fileName + ' borrado localmente!');
@@ -22,14 +26,14 @@ module.exports.deleteAllObjInServ = async function (serverFiles) {
 
 //borrar un archivo
 module.exports.deleteObjInServ = (fileName) => {
-  fs.unlink('./docs/docsReceived/' + fileName, function (err) {
+  fs.unlink(receivedDir + fileName, function (err) {
     if (err) throw err;
     console.log('Archivo ' + fileName + ' borrado localmente!');
   });
 };
 
 module.exports.deleteJsonInServ = (fileName) => {
-  fs.unlink('./docs/jsonResults/' + fileName, function (err) {
+  fs.unlink(jsonResultsDir + fileName, function (err) {
     if (err) throw err;
     console.log('Archivo ' + fileName + ' borrado localmente!');
   });

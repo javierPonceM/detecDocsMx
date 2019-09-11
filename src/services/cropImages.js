@@ -1,8 +1,9 @@
+const config = require("config");
 const fs = require('fs');
 const gm = require('gm');
 
-const cropDir = process.cwd() + '/docs/cropImgs/';
-const receivedDir = process.cwd() + '/docs/docsReceived/';
+const cropDir = config.get("dirs.cropDir");
+const receivedDir = config.get("dirs.receivedDir");
 
 function cropImage(inputFile, width, higth, xinit, yinit) {
     gm(receivedDir + inputFile)
