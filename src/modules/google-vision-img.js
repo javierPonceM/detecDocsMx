@@ -8,9 +8,6 @@ module.exports.analisisVisionDoc = async function(archivo, arrayDocType, callbac
 
   let detections = await ocr.doOCR(archivo);
 
-  // let faces = await faceService.detectFaces(archivo);
-  // rostro = faces ? true : false;
-
   let infoDeDocumento = await getInfoDeDocumento.getInfoDeDocumento(archivo, detections); //identificar el tipo de doc
 
   let idDoc = infoDeDocumento.idTypeDoc;
@@ -28,7 +25,7 @@ module.exports.analisisVisionDoc = async function(archivo, arrayDocType, callbac
 
 //************************************** */
   //comete la siguiente linea si no quiere tener problemas con el modulo de face detection
-  deleteFile.deleteObjInServ(archivo);//borrar los archivos recibidos que se guardaron en el server
+  // deleteFile.deleteObjInServ(archivo);//borrar los archivos recibidos que se guardaron en el server
   //*************************** */
   callback(arrayDocType);
 }

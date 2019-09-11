@@ -13,10 +13,10 @@ module.exports.doOCR = async function (archivo) {
     let detections = resultados.textAnnotations;
     const respVision = detections[0].description;
 
-    fs.writeFile('./docs/jsonResults/' + archivo.replace('.', '') + '.json', JSON.stringify(resultados), (err) => {
-        if (!err) {
-            console.log('saved JSON RESULTS! ')
-        }
-    });
+    // fs.writeFile('./docs/jsonResults/' + archivo.replace('.', '') + '.json', JSON.stringify(resultados), (err) => {
+    //     if (!err) {
+    //         console.log('saved JSON RESULTS! ')
+    //     }
+    // });
     return detections;
 }
