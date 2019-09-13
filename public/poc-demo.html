@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Identificación de docs</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css">
@@ -62,16 +63,19 @@
 
     </div>
 
-    <div class="col-sm-12 col-md-12 col-lg-4">
-      <form enctype="multipart/form-data" action="analisis" method="post" id="form1">
+    <div class="col-sm-12 col-md-12 col-lg-4" >
+      <center>
 
-        <label for="inputFile" id="inputLabel"><span>Seleccionar archivo</span></label>
-        <input type="file" name="inputFile"  class="inputFile" id="inputFile" placeholder="Documento">
-
-        <button type="submit" class="btn btn-primary submitButton">Analizar</button>
-      </form>
-    </div>
-
+        <form enctype="multipart/form-data" action="analisis" method="post" id="form1">
+          
+          <label for="inputFile" id="inputLabel"><span>Seleccionar archivo</span></label>
+          <input type="file" name="inputFile"  class="inputFile" id="inputFile" placeholder="Documento">
+          <br>
+          <button type="submit" class="btn btn-primary submitButton">Analizar</button>
+        </form>
+      </center>
+      </div>
+      
     <div class="col-sm-12 col-md-12 col-lg-4">
       <div id="resultados">
 
