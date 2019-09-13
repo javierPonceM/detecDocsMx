@@ -8,30 +8,39 @@ const cropService = require('./cropImages');
 const receivedDir = config.get("dirs.receivedDir");
 const jsonResultsDir = config.get("dirs.jsonResultsDir");
 
-async function detectFaces(inputFile) {
-  let faceCoordenates = {};
-  const request = { image: { source: { filename: receivedDir + inputFile } } };
-  const results = await client.faceDetection(request);
-  const faces = results[0].faceAnnotations;
-  const numFaces = faces.length;
-  console.log(`Found ${numFaces} face${numFaces === 1 ? '' : 's'}.`);
-  if (numFaces != 0) {  //checar el caso de una imagen con mas rostros.
-    //recortar el rostro de la imagen si es que lo hay
-    let width = faces[0].boundingPoly.vertices[1].x - faces[0].boundingPoly.vertices[0].x;
-    let higth = faces[0].boundingPoly.vertices[2].y - faces[0].boundingPoly.vertices[1].y;
-    let xinit = faces[0].boundingPoly.vertices[0].x;
-    let yinit = faces[0].boundingPoly.vertices[0].y;
-    faceCoordenates = {
-      face: [{
-        width: width,
-        higth: higth,
-        xinit: xinit,
-        yinit: yinit
+function detectFaces(inputFile) {
+  return new Promise(async (resolve, reject) => {
+    let faceCoordenates = {};
+    const request = { image: { source: { filename: receivedDir + inputFile } } };
+    try {
+      const results = await client.faceDetection(request);
+      const faces = results[0].faceAnnotations;
+      const numFaces = faces.length;
+      console.log(`Found ${numFaces} face${numFaces === 1 ? '' : 's'}.`);
+
+      if (numFaces != 0) {  //checar el caso de una imagen con mas rostros.
+        //recortar el rostro de la imagen si es que lo hay
+        let width = faces[0].boundingPoly.vertices[1].x - faces[0].boundingPoly.vertices[0].x;
+        let higth = faces[0].boundingPoly.vertices[2].y - faces[0].boundingPoly.vertices[1].y;
+        let xinit = faces[0].boundingPoly.vertices[0].x;
+        let yinit = faces[0].boundingPoly.vertices[0].y;
+        faceCoordenates = {
+          face: [{
+            width: width,
+            higth: higth,
+            xinit: xinit,
+            yinit: yinit
+          }
+          ]
+        };
+        resolve(faceCoordenates);
+      } else {
+        throw new Error('No faces in picture');
       }
-      ]
-    };
-  }
-  return faceCoordenates;
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
 //solo para sacar los datos de las posiciones de los json

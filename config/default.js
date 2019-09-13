@@ -13,7 +13,7 @@ export_config.db["url"] = process.env.urlDb || "localhost";
 export_config.db["port"] = process.env.portDb || "5432";
 export_config.db["user"] = process.env.userDb || "javier";
 export_config.db["database"] = process.env.database || "infoFromDocsAnalizeDB";
-export_config.db["password"] = process.env.passwordDb || "123";
+export_config.db["password"] = process.env.passwordDb || "contrasenhaDb";
 
 export_config.dirs["cropDir"] = process.cwd() + '/docs/cropImgs/';
 export_config.dirs["receivedDir"] = process.cwd() + '/docs/docsReceived/';
