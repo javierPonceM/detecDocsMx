@@ -2,8 +2,6 @@ const config = require('config');
 const db = require(process.cwd() + '/src/db/dbOperations');
 const saveDataWithFace = require(process.cwd() + '/src/db/saveDataWithFace');
 const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
-const getFaceFromDb = require(process.cwd() + '/src/db/getCropImgFromDb');
-const compareFaces = require(process.cwd() + '/src/services/compareFacesImgs');
 
 const exprFechNaci = /FE[CG]HA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
   exprNomb = /N[ÓO0]MBRE/ig,
@@ -16,7 +14,7 @@ const exprFechNaci = /FE[CG]HA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
   expSex = /SEX[ÓO0]\s[H|M]/g,
   expDom = /D[ÓO0]M[I1lL][CG][I1lL]L[I1lL][ÓO0]/g,
   expMinus = /[a-z]{1,25}/g;
-  expVig = /V[I1lL][GC]EN[CG][I1lL]A\s\d{4}/g;
+expVig = /V[I1lL][GC]EN[CG][I1lL]A\s\d{4}/g;
 
 const cropDir = config.get("dirs.cropDir");
 
@@ -33,7 +31,7 @@ let getInfoFromIne = async function (nameFile, datos) {
     arrSex = datos[0].description.match(expSex);
     sexo = arrSex[0] ? arrSex[0].replace('SEXO', '') : '';
     arrFechaNac = datos[0].description.match(expFecha);
-    fechaNac = arrFechaNac[0] ? arrFechaNac[0].replace(/\//g,'-') : null;
+    fechaNac = arrFechaNac[0] ? arrFechaNac[0].replace(/\//g, '-') : null;
     arrVig = datos[0].description.match(expVig);
     vigencia = arrVig[0] ? arrVig[0].replace('VIGENCIA ', '') : '';
 
@@ -84,29 +82,15 @@ let getInfoFromIne = async function (nameFile, datos) {
       validezDoc: true,
       dataInDb: false
     };
-    // obtener id, si hay procede a comparar, si no que se guarden
-    let idBd = await db.dbRecuperateId(datosDoc);
-    if (idBd) {
-      console.log("id en la base de datos de la informacion: "+ idBd);
-      datosDoc.dataInDb = true;
-      // hacemos el crop al mismo tiempo de rescatar lo que ya teniamos y despues comparar
-      let fileRecuperated = await getFaceFromDb.getFaceImg(idBd);
 
-      console.log(fileRecuperated);
-      let resultCompar = await compareFaces.compare(nameFile,fileRecuperated);
-      console.log(`el resultado de comparar es ${resultCompar}`);
-
+    let savedData = await saveDataWithFace.saveData(datosDoc, nameFile);
+    if (savedData) {
+      console.log(" datos guardados!!");
     } else {
-      let savedData = await saveDataWithFace.saveData(datosDoc, nameFile);
-      if (savedData) {
-        console.log(" datos guardados!!");        
-      } else {
-        console.log(" datos no guardados!!");
-      }
+      console.log(" datos no guardados!!");
     }
-
     return datosDoc;
-    
+
   } else {
     return false;
   }
