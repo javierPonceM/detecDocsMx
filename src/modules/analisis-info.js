@@ -37,6 +37,7 @@ async function getInfoDeDocumento(archivo, respVision) {
     if (stsRecibPredialCmdx != false) return stsRecibPredialCmdx;
     if (stsRecibAguaCmdx != false) return stsRecibAguaCmdx;
   
+    console.log("no hubo datos!");
     return getInfoFromUnkn; //si ningun documento es reconocido se envia vacio
     
   } catch (error) {
