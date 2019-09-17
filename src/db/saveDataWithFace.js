@@ -1,8 +1,9 @@
 var cropFaceService = require(process.cwd() + '/src/services/cropFaceInImg');
 var db = require(process.cwd() + '/src/db/dbOperations');
 const saveCropImg = require(process.cwd() + '/src/services/saveCropImgInDb').saveCropImgInDb;
+var deleteFile = require(process.cwd() + '/src/services/deleteFiles.js');
 
-module.exports.saveDataInDb = saveDataInDb = async (datosDoc, nameFile) => {
+module.exports.saveData = async (datosDoc, nameFile) => {
     // se guarda el texto plano pero ademas se guarda el rostro(como imagen) detectado
     try {
         let saved = await db.dbInsertData(datosDoc);
@@ -12,8 +13,10 @@ module.exports.saveDataInDb = saveDataInDb = async (datosDoc, nameFile) => {
             console.log(typeof faceImg == "string" ? faceImg + " contiene la cara!!" : faceImg);
             let id = await db.dbRecuperateId(datosDoc);
             let savedCropImg = await saveCropImg(faceImg, id);
+            deleteFile.deleteCropImgInServ(faceImg);//borrar los archivos recibidos que se guardaron en el server
             return savedCropImg;
         } else {
+            console.log("No se pudo guardar los datos!");
             return false;
         }
     } catch (error) {

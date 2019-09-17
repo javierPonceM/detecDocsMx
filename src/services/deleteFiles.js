@@ -5,6 +5,7 @@ const storage = new Storage();
 
 const receivedDir = config.get("dirs.receivedDir");
 const jsonResultsDir = config.get("dirs.jsonResultsDir");
+const cropDir = config.get("dirs.cropDir");
 
 //borrar un archivo en google store
 module.exports.deleteObject = function (fileName, bucketName) {
@@ -34,6 +35,13 @@ module.exports.deleteObjInServ = (fileName) => {
 
 module.exports.deleteJsonInServ = (fileName) => {
   fs.unlink(jsonResultsDir + fileName, function (err) {
+    if (err) throw err;
+    console.log('Archivo ' + fileName + ' borrado localmente!');
+  });
+};
+
+module.exports.deleteCropImgInServ = (fileName) => {
+  fs.unlink(cropDir + fileName, function (err) {
     if (err) throw err;
     console.log('Archivo ' + fileName + ' borrado localmente!');
   });

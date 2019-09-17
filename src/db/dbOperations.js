@@ -17,7 +17,7 @@ module.exports.dbInsertData = dbInsertData = (data) => {
                 console.error(err);
                 reject(err);
             } else {
-                console.log(result);
+                console.log("Datos del documento guardados!!");
                 resolve(true);
             }
         });
@@ -33,7 +33,7 @@ module.exports.dbInsertCropImg = dbInsertCropImg = (data, id) => {
                 console.log(err);
                 reject(err);
             } else {
-                console.log(response);
+                console.log("RCrop de imagen guardada!");
                 resolve(true);
             }
         });
@@ -56,8 +56,28 @@ module.exports.dbRecuperateId = dbRecuperateId = (data) => {
                 console.error(err);
                 reject(err);
             } else {
-                console.log(response.rows);
+                if (response.rows[0]) {
+                    console.log("ID Recuperado", response.rows[0]);
+                }
                 response.rows[0] ? resolve(response.rows[0].id): resolve(null);
+            }
+        });
+    });
+}
+
+module.exports.getFaceFromDb = (id) => {
+    return new Promise((resolve, reject) => {
+        let valuesForDb = [id];
+        let sentencia = 'SELECT rostro FROM infoFromDocs WHERE id=($1)';
+        dbClient.query(sentencia, valuesForDb, (err, response) => {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else {
+                if (response.rows[0]) {
+                    console.log("Datos del rostro recuperados");
+                }
+                response.rows[0] ? resolve(response.rows[0].rostro): resolve(null);
             }
         });
     });

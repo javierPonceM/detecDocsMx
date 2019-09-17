@@ -1,7 +1,9 @@
 const config = require('config');
 const db = require(process.cwd() + '/src/db/dbOperations');
-const saveCropImgInDb = require(process.cwd() + '/src/db/saveDataWithFace').saveCropImgInDb;
+const saveDataWithFace = require(process.cwd() + '/src/db/saveDataWithFace');
 const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+const getFaceFromDb = require(process.cwd() + '/src/db/getCropImgFromDb');
+const compareFaces = require(process.cwd() + '/src/services/compareFacesImgs');
 
 const exprFechNaci = /FE[CG]HA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
   exprNomb = /N[ÓO0]MBRE/ig,
@@ -79,23 +81,32 @@ let getInfoFromIne = async function (nameFile, datos) {
       fechaNacimiento: fechaNac,
       vigencia: vigencia,
       rostro: '',
-      validezDoc: true
+      validezDoc: true,
+      dataInDb: false
     };
-    return datosDoc;
     // obtener id, si hay procede a comparar, si no que se guarden
     let idBd = await db.dbRecuperateId(datosDoc);
     if (idBd) {
-      console.log(idBd, "id en la base de datos dela informacion ");
-    } else {
-      let savedData = saveCropImgInDb(datosDoc, nameFile);
-      if (savedData) {
-        return datosDoc;
+      console.log("id en la base de datos de la informacion: "+ idBd);
+      datosDoc.dataInDb = true;
+      // hacemos el crop al mismo tiempo de rescatar lo que ya teniamos y despues comparar
+      let fileRecuperated = await getFaceFromDb.getFaceImg(idBd);
 
+      console.log(fileRecuperated);
+      let resultCompar = await compareFaces.compare(nameFile,fileRecuperated);
+      console.log(`el resultado de comparar es ${resultCompar}`);
+
+    } else {
+      let savedData = await saveDataWithFace.saveData(datosDoc, nameFile);
+      if (savedData) {
+        console.log(" datos guardados!!");        
       } else {
-        return false;
+        console.log(" datos no guardados!!");
       }
     }
 
+    return datosDoc;
+    
   } else {
     return false;
   }
