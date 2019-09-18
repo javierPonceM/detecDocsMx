@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const sL = /\n/g,
   exp1 = /Sum[I1l]n[I1l]strad[O0]r\sde\sServ[I1l]c[I1l][O0]s\sB[aá]s[I1l]c[O0]s\sCFE/ig,
   exp2 = /CFE\sSum[I1l]n[I1l]strador\sde\sServ[I1l]c[I1l]os\sB[aá]s[I1l]cos/ig,
@@ -12,7 +15,7 @@ const sL = /\n/g,
   exprCp1 = /C\.?P\.?/i;
 
 
-let getInfoFromCfe = async function(datos, rostro) {
+let getInfoFromCfe = function(datos, rostro) {
   var cfeCompDom, cfeCompDom1, cfeCompDom2, posRfc, posNoServi, datosRep,
     posTotal, arrPeriFac, datosRep1, aux, nombre, direccion, direccion0, direccion1, direccion2,direccion3,
     direccion3, nombreArr, arrInfoLimp;
@@ -36,7 +39,7 @@ let getInfoFromCfe = async function(datos, rostro) {
 
     arrRfc1 = datosRep.split(sL);
     aux = arrRfc1[0].length;
-    arrInfoLimp = await limpiarArr(arrRfc1);
+    arrInfoLimp = limpiarArr(arrRfc1);
     console.log('========datos rep==============');
     console.log(arrInfoLimp);
     console.log('======================');

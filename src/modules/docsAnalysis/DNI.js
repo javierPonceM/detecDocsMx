@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const exprEsp = /ESPA[N|Ñ]A/ig;
 const exprFechNaci = /FECHA\sDE\sNAC[I1lL]M[I1lL]ENT[O0Ó]/i;
 const expDni = /(D[O0Ó]CUMENT[O0Ó]\sNACI[O0Ó]NAL\sDE\sIDENTIDAD)|(C[E|É]DULA\sDE\sIDENTIDAD)|(DNI)/ig;

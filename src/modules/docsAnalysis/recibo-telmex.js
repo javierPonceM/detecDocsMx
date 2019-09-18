@@ -1,3 +1,5 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+
 const exprCp = /C\.?P\.?/ig,
   exprCp1 = /\d{5}/ig,
   expTlmx = /TELEF[O0]N[O0]S\sDE\sM[EéÉ]X[I1l]C[O0]/ig,
@@ -10,16 +12,15 @@ const exprCp = /C\.?P\.?/ig,
   expFecha = /(\d{2}[/|-][A-Z]{3}[/|-]\d{4})/i,
   expSl = /\n/g;
 
-
-let getInfoFromTelmx = async function(datos, rostro) {
-  let tmxCompDom, arrRfc1, arrRfc2, posRfc1, posRfc2,
+//pendiente
+let getInfoFromTelmx = function (datos1) {
+  let tmxCompDom, arrRfc1, arrRfc2, posRfc1, posRfc2, datos,
     datosRep, datosRep1, datosRep2, arrInfImp, posInfImp, arrCP, posCP,
     fullName, partName, domicilio, cp0, cpValue, secondname, datosDoc, domicilio0;
 
-  tmxCompDom = expTlmx.test(datos);
-
+    tmxCompDom = expTlmx.test(datos1[0].description);
   if (tmxCompDom == true) {
-
+    datos = datos1[0].description;
     arrRfc1 = datos.match(expRfc1);
     posRfc1 = datos.indexOf(arrRfc1[0]);
     arrRfc2 = datos.match(expRfc2);
@@ -27,7 +28,7 @@ let getInfoFromTelmx = async function(datos, rostro) {
 
     datosRep = datos.slice(posRfc1 + 4, posRfc2);
     datosRep1 = datosRep.split(expSl);
-    datosRep2 = await limparArr(datosRep1);//se regresa un arreglo con la info importante
+    datosRep2 = limparArr(datosRep1);//se regresa un arreglo con la info importante
 
     fullName = datosRep2[0];
     partName = fullName.split(' ');
@@ -63,7 +64,9 @@ let getInfoFromTelmx = async function(datos, rostro) {
       cp: cpValue[0],
       wichOne: 'Recibo de teléfono Telmex',
       typeDoc: 'comprobante domicilio',
-      faceDetected: rostro
+      faceDetected: false,
+      vigencia:2019,
+      validez:true,
     };
     return datosDoc;
   } else {
@@ -72,7 +75,7 @@ let getInfoFromTelmx = async function(datos, rostro) {
 }
 
 function limparArr(arr) {
-//se salvara lo que importa, palabras en mayusculas, nada de numeros, fechas, minusculas
+  //se salvara lo que importa, palabras en MAYUSCULAS, nada de numeros, fechas, minusculas
   let arrClean = [],
     valExp1, valExp2, valExp3;
   for (var i = 0; i < arr.length; i++) {

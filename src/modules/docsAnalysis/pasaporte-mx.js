@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const sL = /\n/g;
 let getInfoFromPasspMX = (info, rostro) => {
 
