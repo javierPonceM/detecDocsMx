@@ -1,13 +1,17 @@
+//lo hace con la primera palabra que coincida, si se quiere puede modificarse eso agregandole un parametro extra a las funciones
+
+
 // solo traemos las palabras encontradas en el area de la ine anterior a la leyenda "fecha"
 
 // barrido horizontal en base a una palabra, y un sentido, querer lo de la derecha o izquierda
 module.exports.limitAreaForOcrX = limitAreaForOcrX = (infoFromPastOcr, wordLimit, direction) => {
   return new Promise((resolve, reject) => {
-    let info = '', xlimit = '';
+    let info = '', xlimit = '', cont=0;
 
     infoFromPastOcr.forEach(elm => {
-      if (elm.description === wordLimit) {
+      if (elm.description === wordLimit && cont===0) {
         xlimit = elm.boundingPoly.vertices[0].x;
+        cont++;
       }
       if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && xlimit === '') {
         reject('no word limit for limit the caracters in image');
@@ -36,25 +40,26 @@ module.exports.limitAreaForOcrX = limitAreaForOcrX = (infoFromPastOcr, wordLimit
 // barrido vertical en base a una palabra, y un sentido, querer lo de arriba o lo de abajo
 module.exports.limitAreaForOcrY = limitAreaForOcrY = (infoFromPastOcr, wordLimit, direction) => {
   return new Promise((resolve, reject) => {
-    let info = '', ylimit = '';
+    let info = '', ylimit = '', cont=0;
 
     infoFromPastOcr.forEach(elm => {
-      if (elm.description === wordLimit) {
+      if (elm.description === wordLimit && cont===0) {
         ylimit = elm.boundingPoly.vertices[0].y;
+        cont++;
       }
       if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && ylimit === '') {
-        reject('no word limit for limit the caracters in image');
+        reject('no word limit for limit the characters in image');
       }
     });
     if (direction === 'up') {
       infoFromPastOcr.forEach(elm => {
-        if (elm.boundingPoly.vertices[0].y > ylimit && elm.boundingPoly.vertices[1].y > ylimit) {
+        if (elm.boundingPoly.vertices[0].y < ylimit && elm.boundingPoly.vertices[1].y < ylimit) {
           info = info.concat(' ' + elm.description);
         }
       });
     } else {
       infoFromPastOcr.forEach(elm => {
-        if (elm.boundingPoly.vertices[0].y < ylimit && elm.boundingPoly.vertices[1].y < ylimit) {
+        if (elm.boundingPoly.vertices[0].y > ylimit && elm.boundingPoly.vertices[1].y > ylimit) {
           info = info.concat(' ' + elm.description);
         }
       });
@@ -74,7 +79,7 @@ module.exports.limitAreaForOcrXY = limitAreaForOcrXY = (infoFromPastOcr, wordLim
         xlimit1 = elm.boundingPoly.vertices[0].x;
         ylimit1 = elm.boundingPoly.vertices[0].y;
       }
-      if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && xlimit === '') {
+      if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && xlimit1 === '') {
         reject('no word '+wordLimit+'limit for limit the characters in image');
       }
     });
@@ -85,7 +90,7 @@ module.exports.limitAreaForOcrXY = limitAreaForOcrXY = (infoFromPastOcr, wordLim
           xlimit2 = elm.boundingPoly.vertices[0].x;
           ylimit2 = elm.boundingPoly.vertices[0].y;
         }
-        if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && xlimit === '') {
+        if (elm == infoFromPastOcr[infoFromPastOcr.length - 1] && xlimit2 === '') {
           reject('no word ' +wordLimit2+ 'limit for limit the characters in image');
         }
       });
