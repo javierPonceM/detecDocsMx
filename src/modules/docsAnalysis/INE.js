@@ -14,8 +14,6 @@ const exprFechNaci = /FE[CG]HA\sDE\sNAC[I1lL]M[I1lL]ENT[ÓO0]/ig,
   expMinus = /[a-z]{1,25}/g;
   expVig = /V[I1lL][GC]EN[CG][I1lL]A\s\d{4}/g;
 
-const cropDir = config.get("dirs.cropDir");
-
 
 let getInfoFromIne = async function (nameFile, datos) {
   let ine, ine1, arrNomb, posNombre, arrClav, posClave, datosRep,

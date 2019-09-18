@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const exprNaci = /NAC[I1l][O0]NALIDAD/i;
 const expAntg = /ANT[I1]G[UÜ]EDAD/i;
 const expLicCond = /L[I1l]CENC[I1l]A\sDE\sC[O0]NDUC[I1l]R/i;

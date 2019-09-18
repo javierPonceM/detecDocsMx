@@ -10,20 +10,20 @@ var ine = require('./docsAnalysis/INE.js'),
   reciboPredialCdmx = require('./docsAnalysis/recibo-predial-cdmx.js');
 
 
-async function getInfoDeDocumento(archivo, respVision) {
+module.exports.getInfoDeDocumento = async (archivo, respVision) => {
   let rostro = true; //provisional
   //regresa false si no es el documento, regresa la info analizada si es el documento en cuestion
   const datos = respVision[0].description;
   let stsIne = await ine.getInfoFromIne(archivo, respVision); //necesita un tratamiento diferente
-  let stsCfe = await cfe.getInfoFromCfe(datos, rostro);//funcion asincona, esperar hasta que termine
-  let stsTelmex = await telmex.getInfoFromTelmx(datos, rostro);
-  let stsAxtel = await axtel.getInfoFromAxt(datos, rostro);
+  let stsCfe = cfe.getInfoFromCfe(datos, rostro);//funcion asincona, esperar hasta que termine
+  let stsTelmex = telmex.getInfoFromTelmx(respVision);
+  let stsAxtel = axtel.getInfoFromAxt(datos, rostro);
   let stsPassMx = passMx.getInfoFromPasspMX(datos, rostro);
   let stsFormMigrtMx = formMigrtMx.getInfoFromFormMigMX(datos, rostro);
   let stsDni = dni.getInfoFromDni(datos, rostro);
   let stsLicDeCondCmdx = licDeCondCdmxs.getInfoFromLicDeCondCdmx(datos, rostro);
-  let stsRecibPredialCmdx = await reciboPredialCdmx.getInfoFromRecibPredialCdmx(datos, rostro);//funcion asincona, esperar hasta que termine
-  let stsRecibAguaCmdx = await reciboAguaCdmx.getInfoFromRecibAguaCdmx(datos, rostro);
+  let stsRecibPredialCmdx = reciboPredialCdmx.getInfoFromRecibPredialCdmx(datos, rostro);//funcion asincona, esperar hasta que termine
+  let stsRecibAguaCmdx = reciboAguaCdmx.getInfoFromRecibAguaCdmx(datos, rostro);
 
   if (stsIne != false) return stsIne;
   if (stsCfe != false) return stsCfe;
@@ -39,8 +39,6 @@ async function getInfoDeDocumento(archivo, respVision) {
   return getInfoFromUnkn(); //si ningun documento es reconocido se envia vacio
 }
 
-module.exports.getInfoDeDocumento = getInfoDeDocumento;
-
 function getInfoFromUnkn() {
   let datosVacios = {
     idTypeDoc: 0,
@@ -53,8 +51,8 @@ function getInfoFromUnkn() {
     },
     domicilio: '',
     cp: '',
-    wichOne: '',
-    typeDoc: '',
+    wichOne: null,
+    typeDoc: 'no se reconocio documento!',
     faceDetected: false
   };
   return datosVacios;
