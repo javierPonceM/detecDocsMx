@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const exprCp = /C\.?P\.?/ig,
   exprCp1 = /\d{5}/ig,
   expMesFact = /Mes\sde\sFact[UÚ]rac[I1l][O0óÓ]n/ig,
@@ -8,7 +11,7 @@ const exprCp = /C\.?P\.?/ig,
   expSl = /\n/g,
   expTel = /\d{4}/g;
 
-let getInfoFromAxt = async function(datos, rostro) {
+let getInfoFromAxt = function(datos, rostro) {
   let axtelComp = /axtel/i.test(datos);
 
   if (axtelComp == true) {
@@ -19,7 +22,7 @@ let getInfoFromAxt = async function(datos, rostro) {
 
     let datosRep = datos.slice(posMesFact + 13, posEdoCta);
     let datosRep1 = datosRep.split(expSl);
-    let datosRep2 = await limparArr(datosRep1);
+    let datosRep2 = limparArr(datosRep1);
 
     let nombre = datosRep2[0];
     let nombreArr = nombre.split(' ');

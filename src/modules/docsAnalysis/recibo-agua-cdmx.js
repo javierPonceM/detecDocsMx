@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const expSl = /\n/g,
   exp1 = /S[uúUÚüÜ]M[I1líÍ]N[I1líÍ]STR[O0óÓ]\sDE\sAG[uúUÚüÜ]A/ig,
   exp2 = /SACMEX/ig,
@@ -10,7 +13,7 @@ const expSl = /\n/g,
   expInfMay = /[A-Z]{2,15}/g,
   expUbic = /[uúUÚüÜ]B[I1íÍl]CAC[I1íÍl][O0óÓ]N/g;
 
-let getInfoFromRecibAguaCdmx = async function(datos, rostro) {
+let getInfoFromRecibAguaCdmx = function(datos, rostro) {
   var cond1, con2, nombre, direccion1, direccion2, direccion3,
     datosRep, datosRep1, datosRep2, datosRep3, arrSumAgua, arrNumCta,
     posSumAgua, posNumCta, arrContbte, posContbte, subNom, nombreArr, secondname, codPost;
@@ -25,7 +28,7 @@ let getInfoFromRecibAguaCdmx = async function(datos, rostro) {
     posDatToma = datos.indexOf(arrDatToma[0]);
     datosRep = datos.slice(posSumAgua + arrSumAgua[0].length, posDatToma);
     datosRep1 = datosRep.split(expSl);
-    datosRep2 = await limparArr(datosRep1);
+    datosRep2 = limparArr(datosRep1);
     console.log('===========');
     console.log(datosRep2);
     console.log('==============');

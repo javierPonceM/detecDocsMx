@@ -1,3 +1,6 @@
+const getInfoFromArea = require(process.cwd() + '/src/services/limitAreaForOcr');
+// datos1 = await getInfoFromArea.limitAreaForOcrX(datos, 'FECHA', 'left');
+
 const expSl = /\n/g,
   exp1 = /SECRETAR[I1líÍ]A/ig,
   exp2 = /ADM[I1líÍ]N[I1líÍ]STRAC[I1íÍl][O0óÓ]N/ig,
@@ -11,7 +14,7 @@ const expSl = /\n/g,
   expUbic = /[uúUÚüÜ]B[I1íÍl]CAC[I1íÍl][O0óÓ]N/g;
 
 
-let getInfoFromRecibPredialCdmx = async function(datos, rostro) {
+let getInfoFromRecibPredialCdmx = function(datos, rostro) {
   var cond1, con2, con3, nombre, direccion1, direccion2, direccion3,
     datosRep, datosRep1, datosRep2, datosRep3, arrEntFed, arrNumCta,
     posEntFed, posNumCta, arrContbte, posContbte, subNom, nombreArr, secondname, codPost;
@@ -30,7 +33,7 @@ let getInfoFromRecibPredialCdmx = async function(datos, rostro) {
     posContbte = datosRep.indexOf(arrContbte[0]);
     datosRep1 = datosRep.slice(posContbte, datosRep.length - 1);
     datosRep2 = datosRep1.split(expSl);
-    datosRep3 = await limparArr(datosRep2); //obtener puras palabras en mayuscula
+    datosRep3 = limparArr(datosRep2); //obtener puras palabras en mayuscula
     subNom = datosRep3[0];
 
     posContbte = subNom.indexOf(':');
